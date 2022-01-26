@@ -10,12 +10,12 @@
 
 # this function rounds the user number to the
 # correct amount of decimal places
-def round_decimal(a, b):
+def round_decimal(num_array, dec_places):
     # process for rounding number
-    a[0] = a[0] * (10 ** b[0])
-    a[0] += 0.5
-    a[0] = int(a[0])
-    a[0] = a[0] / (10 ** b[0])
+    num_array[0] = num_array[0] * (10 ** dec_places)
+    num_array[0] += 0.5
+    num_array[0] = int(num_array[0])
+    num_array[0] = num_array[0] / (10 ** dec_places)
 
 
 # gets input from user, catches invalid data,
@@ -28,8 +28,7 @@ def main():
     print("")
 
     # declaring lists
-    a_user = []
-    b_user = []
+    num_user = []
 
     # get decimal number from user
     dec_num_string = input("Enter a decimal number: ")
@@ -39,7 +38,7 @@ def main():
         dec_num_float = float(dec_num_string)
 
         # adds item to list
-        a_user.append(dec_num_float)
+        num_user.append(dec_num_float)
 
         # gets number of decimal places from user
         dec_places_string = input("Enter the number of decimal places: ")
@@ -52,14 +51,12 @@ def main():
             if dec_places_int < 0:
                 print("{} is not a positive integer." .format(dec_places_int))
             else:
-                # adds item to list
-                b_user.append(dec_places_int)
 
                 # calls function to round numbers
-                round_decimal(a_user, b_user)
+                round_decimal(num_user, dec_places_int)
 
                 print("{} rounded to {} decimals is {}"
-                      .format(dec_num_float, dec_places_int, a_user[0]))
+                      .format(dec_num_float, dec_places_int, num_user[0]))
 
         # catch invalid strings
         except Exception:
